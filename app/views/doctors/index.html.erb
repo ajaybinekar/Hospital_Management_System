@@ -1,0 +1,32 @@
+<%= stylesheet_link_tag 'doctor_index', media: 'all' %>
+<h1>Your Patients</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @patients.each do |patient| %>
+      <tr>
+        <td><%= patient.first_name %></td>
+        <td><%= patient.last_name %></td>
+        <td><%= patient.email %></td>
+        <td>
+          <%= link_to 'View Patient', patient_path(patient), class: 'btn btn-primary' %>
+          <%= link_to 'Add Medical Record', new_doctors_patient_medical_record_path(patient), class: 'btn btn-primary' %>
+          <%= link_to 'Admit Patient', new_patient_admission_path(patient), class: 'btn btn-primary' %>
+
+          <% if patient.admissions.any? %>
+            <% admission = patient.admissions.last %>
+            <%= link_to 'Admitted', admin_room_path(admission.room), class: 'btn btn-secondary' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

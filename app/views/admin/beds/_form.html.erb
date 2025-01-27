@@ -1,0 +1,26 @@
+<%= form_with(model: @bed, url: admin_beds_path, local: true) do |form| %>
+      <% if @bed.errors.any? %>
+        <div id="error_explanation" style="background-color: #f8d7da; color: #721c24; padding: 15px; margin-bottom: 20px; border-radius: 5px;">
+          <h2><%= pluralize(@bed.errors.count, "error") %> prohibited this bed from being saved:</h2>
+          <ul style="list-style: none; padding-left: 0;">
+            <% @bed.errors.full_messages.each do |message| %>
+              <li style="font-size: 16px;"><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field" style="margin-bottom: 15px;">
+        <%= form.label :number, style: 'font-size: 16px; font-weight: bold;' %>
+        <%= form.text_field :number, style: 'padding: 10px; font-size: 16px; width: 100%; border: 1px solid #ccc; border-radius: 5px;' %>
+      </div>
+
+      <div class="field" style="margin-bottom: 15px;">
+        <%= form.label :room_id, style: 'font-size: 16px; font-weight: bold;' %>
+        <%= form.collection_select :room_id, Room.all, :id, :number, prompt: true, style: 'padding: 10px; font-size: 16px; width: 100%; border: 1px solid #ccc; border-radius: 5px;' %>
+      </div>
+
+      <div class="actions" style="text-align: center;">
+        <%= form.submit 'Create Bed', style: 'padding: 10px 20px; font-size: 18px; border-radius: 5px; background-color: #28a745; color: white; border: none; cursor: pointer;' %>
+      </div>
+    <% end %>

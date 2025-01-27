@@ -1,0 +1,22 @@
+<h1>Patient Profile: <%= @patient.first_name %></h1>
+
+<p><strong>First Name:</strong> <%= @patient.first_name %></p>
+<p><strong>Last Name:</strong> <%= @patient.last_name %></p>
+<p><strong>Date of Birth:</strong> <%= @patient.date_of_birth.strftime('%d/%m/%Y') if @patient.date_of_birth %></p>
+<p><strong>Contact Number:</strong> <%= @patient.contact_number %></p>
+<p><strong>Email:</strong> <%= @patient.email %></p>
+<p><strong>Gender:</strong> <%= @patient.gender %></p>
+<p><strong>Blood Group:</strong> <%= @patient.blood_group %></p>
+
+<h2>Medical Records</h2>
+<% @patient.medical_records.each do |record| %>
+  <div>
+    <p><strong>Condition:</strong> <%= record.condition %></p>
+    <p><strong>Medication:</strong> <%= record.medication %></p>
+    <% if record.document.attached? %>
+      <p><strong>Document:</strong> <%= link_to 'Download', download_doctors_patient_medical_record_path(@patient, record) %></p>
+    <% else %>
+      <p><strong>Document:</strong> No document attached.</p>
+    <% end %>
+  </div>
+<% end %>

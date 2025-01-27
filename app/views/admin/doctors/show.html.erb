@@ -1,0 +1,15 @@
+<h1>Doctor: <%= @doctor.first_name %> <%= @doctor.middle_name %> <%= @doctor.last_name %></h1>
+
+<p><strong>Email:</strong> <%= @doctor.email %></p>
+<p><strong>Contact Number:</strong> <%= @doctor.contact_number %></p>
+<p><strong>Specialty:</strong> <%= @doctor.qualifications %></p>
+<p><strong>Department:</strong> <%= @doctor.department.name %></p>
+<p><strong>Gender:</strong> <%= @doctor.gender %></p>
+<p><strong>Date of Birth:</strong> <%= @doctor.date_of_birth %></p>
+<p><strong>Experience:</strong> <%= @doctor.experience %></p>
+<p><strong>Nationality:</strong> <%= @doctor.nationality %></p>
+
+<%= image_tag @doctor.photo if @doctor.photo.attached? %>
+
+<%= link_to 'Edit', edit_admin_doctor_path(@doctor), class: 'btn btn-warning' %> |
+<%= link_to 'Back', admin_doctors_path, class: 'btn btn-secondary' %>

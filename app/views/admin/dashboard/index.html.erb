@@ -1,0 +1,55 @@
+<h1 style="font-size: 36px; color: #333; margin-bottom: 20px; font-weight: bold;">Admin Dashboard</h1>
+
+<h2 style="font-size: 24px; color: #555; margin-bottom: 30px; text-align: center;">Manage Hospital Resources</h2>
+
+<!-- Container for horizontal cards -->
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px;">
+
+  <!-- Department Card -->
+  <div style="flex: 1 1 300px; max-width: 300px; margin: 10px; border: 1px solid #ddd; border-radius: 10px; padding: 20px; background-color: #f8f9fa; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); text-align: center;">
+    <%= link_to image_tag('pngfind.com-hospital-png-2822006.png', alt: 'Department Management', style: 'width: 100px; height: auto; border-radius: 50%; margin-bottom: 10px;'), new_user_session_path(role: 'doctor') %>
+    <h3 style="font-size: 20px; color: #007bff; margin-bottom: 15px;">Manage Department</h3>
+    <%= link_to 'Create Department', new_admin_department_path, style: 'text-decoration: none; padding: 10px 3px; border-radius: 5px; background-color: #007bff; color: white; font-weight: bold; display: inline-block; width: 100%;' %>
+    <div style="margin-top: 10px;">
+      <%= link_to 'View All Departments', admin_departments_path, style: 'text-decoration: none; padding: 10px 3px; border-radius: 5px; background-color: #e9ecef; color: #333; font-weight: bold; display: inline-block; width: 100%;' %>
+    </div>
+  </div>
+
+  <!-- Room Card -->
+  <div style="flex: 1 1 300px; max-width: 300px; margin: 10px; border: 1px solid #ddd; border-radius: 10px; padding: 20px; background-color: #f8f9fa; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); text-align: center;">
+    <%= link_to image_tag('Hospital treatment room.png', alt: 'Room Management', style: 'width: 100px; height: auto; border-radius: 50%; margin-bottom: 10px;'), new_user_session_path(role: 'doctor') %>
+    <h3 style="font-size: 20px; color: #28a745; margin-bottom: 15px;">Manage Room</h3>
+    <%= link_to 'Create Room', new_admin_room_path, style: 'text-decoration: none; padding: 10px 3px; border-radius: 5px; background-color: #28a745; color: white; font-weight: bold; display: inline-block; width: 100%;' %>
+    <div style="margin-top: 10px;">
+      <%= link_to 'View All Rooms', admin_rooms_path, style: 'text-decoration: none; padding: 10px 3px; border-radius: 5px; background-color: #e9ecef; color: #333; font-weight: bold; display: inline-block; width: 100%;' %>
+    </div>
+  </div>
+
+  <!-- Bed Card -->
+  <div style="flex: 1 1 300px; max-width: 300px; margin: 10px; border: 1px solid #ddd; border-radius: 10px; padding: 20px; background-color: #f8f9fa; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); text-align: center;">
+    <%= link_to image_tag('hospital-bed.png', alt: 'Bed Management', style: 'width: 100px; height: auto; border-radius: 50%; margin-bottom: 10px;'), new_user_session_path(role: 'doctor') %>
+    <h3 style="font-size: 20px; color: #17a2b8; margin-bottom: 15px;">Manage Bed</h3>
+    <%= link_to 'Create Bed', new_admin_bed_path, style: 'text-decoration: none; padding: 10px 3px; border-radius: 5px; background-color: #17a2b8; color: white; font-weight: bold; display: inline-block; width: 100%;' %>
+    <div style="margin-top: 10px;">
+      <%= link_to 'View All Beds', admin_beds_path, style: 'text-decoration: none; padding: 10px 3px; border-radius: 5px; background-color: #e9ecef; color: #333; font-weight: bold; display: inline-block; width: 100%;' %>
+    </div>
+  </div>
+
+  <!-- Doctor Management Card -->
+  <div style="flex: 1 1 300px; max-width: 300px; margin: 10px; border: 1px solid #ddd; border-radius: 10px; padding: 20px; background-color: #f8f9fa; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); text-align: center;">
+    <%= link_to image_tag('—Pngtree—photo men doctor physician chest_13143575.png', alt: 'Doctor Management', style: 'width: 100px; height: auto; border-radius: 50%; margin-bottom: 10px;'), new_user_session_path(role: 'doctor') %>
+    <h3 style="font-size: 20px; color: #007bff; margin-bottom: 15px;">Doctor Management</h3>
+    
+    <div style="margin-bottom: 15px;">
+      <%= link_to 'Create Doctor', new_admin_doctor_path, style: 'text-decoration: none; padding: 10px 3px; border-radius: 5px; background-color: #007bff; color: white; font-weight: bold; display: inline-block; width: 100%;' %>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <%= link_to 'Set Doctor Availability', new_admin_availability_path, style: 'text-decoration: none; padding: 10px 3px; border-radius: 5px; background-color: #28a745; color: white; font-weight: bold; display: inline-block; width: 100%;' %>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <%= link_to 'Manage Doctor Availability', admin_availabilities_path, style: 'text-decoration: none; padding: 10px 3px; border-radius: 5px; background-color: #17a2b8; color: white; font-weight: bold; display: inline-block; width: 100%;' %>
+    </div>
+  </div>
+</div>

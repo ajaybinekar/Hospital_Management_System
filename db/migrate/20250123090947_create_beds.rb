@@ -1,0 +1,10 @@
+class CreateBeds < ActiveRecord::Migration[8.0]
+  def change
+    create_table :beds do |t|
+      t.string :number
+      t.references :room, null: false, foreign_key: true
+
+      t.timestamps
+    end
+  end
+end

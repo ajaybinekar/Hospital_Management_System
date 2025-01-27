@@ -1,0 +1,88 @@
+<div style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f4f6f9;">
+  <div style="background-color: #fff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 30px; width: 500px;">
+
+    <h1 style="font-size: 28px; color: #007bff; margin-bottom: 20px; text-align: center;">New Doctor</h1>
+
+    <%= form_with(model: @doctor, url: admin_doctors_path, local: true) do |form| %>
+      <% if @doctor.errors.any? %>
+        <div id="error_explanation" style="background-color: #f8d7da; color: #721c24; padding: 15px; margin-bottom: 20px; border-radius: 5px;">
+          <h2><%= pluralize(@doctor.errors.count, "error") %> prohibited this doctor from being saved:</h2>
+          <ul style="list-style: none; padding-left: 0;">
+            <% @doctor.errors.full_messages.each do |message| %>
+              <li style="font-size: 16px;"><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field" style="margin-bottom: 15px;">
+        <%= form.label :first_name, style: 'font-size: 16px; font-weight: bold;' %>
+        <%= form.text_field :first_name, class: 'form-control', style: 'padding: 10px; font-size: 16px; width: 100%; border: 1px solid #ccc; border-radius: 5px;' %>
+      </div>
+
+      <div class="field" style="margin-bottom: 15px;">
+        <%= form.label :middle_name, style: 'font-size: 16px; font-weight: bold;' %>
+        <%= form.text_field :middle_name, class: 'form-control', style: 'padding: 10px; font-size: 16px; width: 100%; border: 1px solid #ccc; border-radius: 5px;' %>
+      </div>
+
+      <div class="field" style="margin-bottom: 15px;">
+        <%= form.label :last_name, style: 'font-size: 16px; font-weight: bold;' %>
+        <%= form.text_field :last_name, class: 'form-control', style: 'padding: 10px; font-size: 16px; width: 100%; border: 1px solid #ccc; border-radius: 5px;' %>
+      </div>
+
+      <div class="field" style="margin-bottom: 15px;">
+        <%= form.label :date_of_birth, style: 'font-size: 16px; font-weight: bold;' %>
+        <%= form.date_field :date_of_birth, class: 'form-control', style: 'padding: 10px; font-size: 16px; width: 100%; border: 1px solid #ccc; border-radius: 5px;' %>
+      </div>
+
+      <div class="field" style="margin-bottom: 15px;">
+        <%= form.label :contact_number, style: 'font-size: 16px; font-weight: bold;' %>
+        <%= form.telephone_field :contact_number, class: 'form-control', style: 'padding: 10px; font-size: 16px; width: 100%; border: 1px solid #ccc; border-radius: 5px;' %>
+      </div>
+
+      <div class="field" style="margin-bottom: 15px;">
+        <%= form.label :email, style: 'font-size: 16px; font-weight: bold;' %>
+        <%= form.email_field :email, class: 'form-control', style: 'padding: 10px; font-size: 16px; width: 100%; border: 1px solid #ccc; border-radius: 5px;' %>
+      </div>
+
+      <div class="field" style="margin-bottom: 15px;">
+        <%= form.label :nationality, style: 'font-size: 16px; font-weight: bold;' %>
+        <%= form.text_field :nationality, class: 'form-control', style: 'padding: 10px; font-size: 16px; width: 100%; border: 1px solid #ccc; border-radius: 5px;' %>
+      </div>
+
+      <div class="field" style="margin-bottom: 15px;">
+        <%= form.label :gender, style: 'font-size: 16px; font-weight: bold;' %>
+        <%= form.select :gender, ['Male', 'Female', 'Other'], {}, class: 'form-control', style: 'padding: 10px; font-size: 16px; width: 100%; border: 1px solid #ccc; border-radius: 5px;' %>
+      </div>
+
+      <div class="field" style="margin-bottom: 15px;">
+        <%= form.label :qualifications, style: 'font-size: 16px; font-weight: bold;' %>
+        <%= form.text_area :qualifications, class: 'form-control', style: 'padding: 10px; font-size: 16px; width: 100%; border: 1px solid #ccc; border-radius: 5px;' %>
+      </div>
+
+      <div class="field" style="margin-bottom: 15px;">
+        <%= form.label :experience, style: 'font-size: 16px; font-weight: bold;' %>
+        <%= form.text_area :experience, class: 'form-control', style: 'padding: 10px; font-size: 16px; width: 100%; border: 1px solid #ccc; border-radius: 5px;' %>
+      </div>
+
+      <div class="field" style="margin-bottom: 15px;">
+        <%= form.label :department_id, style: 'font-size: 16px; font-weight: bold;' %>
+        <%= form.collection_select :department_id, Department.all, :id, :name, { prompt: 'Select a Department' }, class: 'form-control', style: 'padding: 10px; font-size: 16px; width: 100%; border: 1px solid #ccc; border-radius: 5px;' %>
+      </div>
+
+      <div class="field" style="margin-bottom: 20px;">
+        <%= form.label :photo, style: 'font-size: 16px; font-weight: bold;' %>
+        <%= form.file_field :photo, class: 'form-control', style: 'padding: 10px; font-size: 16px; width: 100%; border: 1px solid #ccc; border-radius: 5px;' %>
+      </div>
+
+      <div class="actions" style="text-align: center;">
+        <%= form.submit 'Create Doctor', class: 'btn btn-primary', style: 'padding: 10px 20px; font-size: 18px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;' %>
+      </div>
+    <% end %>
+
+    <div style="text-align: center; margin-top: 20px;">
+      <%= link_to 'Back', admin_doctors_path, class: 'btn btn-secondary', style: 'padding: 10px 20px; font-size: 18px; background-color: #6c757d; color: white; border-radius: 5px; text-decoration: none;' %>
+    </div>
+
+  </div>
+</div>

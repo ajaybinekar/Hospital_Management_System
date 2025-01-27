@@ -1,0 +1,33 @@
+<h2 style="text-align: center; color: #333;">Login</h2>
+
+<h1 style="text-align: center; color: #007bff; margin: 20px 0;">Hospital Management System</h1>
+
+<div style="display: flex; justify-content: center; align-items: center; height: 80vh; gap: 20px;">
+  
+  <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); width: 300px; height: 400px; text-align: center;">
+    <%= link_to image_tag('Hospital.png', alt: 'Patient Login', style: 'width: 100px; height: auto; border-radius: 50%; margin-bottom: 10px;'), new_user_session_path(role: 'patient') %>
+    <h3 style="color: #555;">Login</h3>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div style="margin-bottom: 15px;">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", style: "width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" %>
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: "current-password", style: "width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" %>
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <%= f.submit "Log in", style: "width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;" %>
+      </div>
+    <% end %>
+    <div style="margin-bottom: 15px;">
+ <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+    </div>
+    <div>
+      <%= link_to "Sign Up", new_user_registration_path, style: "color: #007bff; text-decoration: none; font-weight: bold;" %>
+    </div>
+  </div>
+  </div>
+</div>

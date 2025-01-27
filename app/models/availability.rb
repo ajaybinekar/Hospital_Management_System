@@ -1,0 +1,17 @@
+class Availability < ApplicationRecord
+  belongs_to :doctor
+
+  validates :start_time, :end_time, :duration, presence: true
+  validates :status, inclusion: { in: %w[available unavailable] }
+  validate :end_time_after_start_time
+
+  private
+
+  def end_time_after_start_time
+    return if end_time.blank? || start_time.blank?
+
+    if end_time <= start_time
+      errors.add(:end_time, "must be after the start time")
+    end
+  end
+end

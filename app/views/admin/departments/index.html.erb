@@ -1,0 +1,30 @@
+<h1 style="font-size: 36px; color: #333; margin-bottom: 20px; text-align: center; font-weight: bold;">Departments</h1>
+
+<div style="text-align: center; margin-bottom: 20px;">
+  <%= link_to 'New Department', new_admin_department_path, style: 'text-decoration: none; font-weight: bold; padding: 10px 20px; border-radius: 5px; background-color: #28a745; color: white; font-size: 18px;' %>
+</div>
+
+<table style="width: 80%; margin: 0 auto; border-collapse: collapse; background-color: #f8f9fa; border: 1px solid #ddd; border-radius: 10px;">
+  <thead>
+    <tr style="background-color: #007bff; color: white; text-align: left; font-size: 18px;">
+      <th style="padding: 15px; border-right: 1px solid #ddd;">Name</th>
+      <th style="padding: 15px;">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @departments.each do |department| %>
+      <tr style="border-bottom: 1px solid #ddd; text-align: left;">
+        <td style="padding: 12px; font-size: 16px; border-right: 1px solid #ddd;"><%= department.name %></td>
+        <td style="padding: 12px; font-size: 16px; display: flex; gap: 10px;">
+          <%= link_to 'Show', admin_department_path(department), style: 'text-decoration: none; font-weight: bold; color: #007bff;' %>
+          <%= link_to 'Edit', edit_admin_department_path(department), style: 'text-decoration: none; font-weight: bold; color: #ffc107;' %>
+          <%= button_to 'Delete', admin_department_path(department), method: :delete, data: { confirm: 'Are you sure?' }, style: 'font-weight: bold; color: #dc3545; background: none; border: none;' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div style="text-align: center; margin-top: 20px;">
+  <%= link_to 'Back', admin_dashboard_path, style: 'text-decoration: none; font-weight: bold; padding: 10px 20px; border-radius: 5px; background-color: #6c757d; color: white; font-size: 18px;' %>
+</div>

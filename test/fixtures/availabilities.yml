@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  doctor: one
+  start_time: 2025-01-23 18:01:00
+  end_time: 2025-01-23 18:01:00
+  status: MyString
+
+two:
+  doctor: two
+  start_time: 2025-01-23 18:01:00
+  end_time: 2025-01-23 18:01:00
+  status: MyString

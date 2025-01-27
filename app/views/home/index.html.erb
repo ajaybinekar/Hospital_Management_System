@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hospital Management System</title>
+  <%= stylesheet_link_tag 'home_index', media: 'all' %>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to the Hospital Management System</h1>
+
+    <h2>Login</h2>
+    <div class="login-options">
+      <div class="login-option">
+        <%= link_to image_tag('—Pngtree—photo men doctor physician chest_13143575.png', alt: 'Doctor Login', class: 'login-image'), new_user_session_path(role: 'doctor') %>
+        <p><%= link_to 'Doctor Login', new_user_session_path(role: 'doctor'), class: 'login-link' %></p>
+      </div>
+      <div class="login-option">
+        <%= link_to image_tag('vecteezy_3d-render-hand-carrying-heart_13091288.png', alt: 'Patient Login', class: 'login-image'), new_user_session_path(role: 'patient') %>
+        <p><%= link_to 'Patient Login', new_user_session_path(role: 'patient'), class: 'login-link' %></p>
+      </div>
+      <div class="login-option">
+        <%= link_to image_tag('Administrator.png', alt: 'Admin Login', class: 'login-image'), new_user_session_path(role: 'admin') %>
+        <p><%= link_to 'Admin Login', new_user_session_path(role: 'admin'), class: 'login-link' %></p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

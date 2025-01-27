@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  patient: one
+  room: one
+  admission_date: 2025-01-24 11:37:22
+  discharge_date: 2025-01-24 11:37:22
+
+two:
+  patient: two
+  room: two
+  admission_date: 2025-01-24 11:37:22
+  discharge_date: 2025-01-24 11:37:22

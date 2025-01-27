@@ -1,0 +1,49 @@
+<div style="max-width: 1200px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif; color: #333;">
+  <h1 style="text-align: center; color: #007bff;">Welcome, <%= @patient.first_name %></h1>
+
+  <h2 style="margin-top: 30px; border-bottom: 2px solid #007bff; padding-bottom: 10px;">Your Information</h2>
+  <p style="font-size: 1.1em; margin-bottom: 10px;">
+    <strong>Last Name:</strong> <%= @patient.last_name %>
+  </p>
+  <p style="font-size: 1.1em; margin-bottom: 10px;">
+    <strong>Email:</strong> <%= @patient.email %>
+  </p>
+  <p style="font-size: 1.1em; margin-bottom: 20px;">
+    <strong>Contact Number:</strong> <%= @patient.contact_number %>
+  </p>
+
+  <h2 style="margin-top: 30px; border-bottom: 2px solid #007bff; padding-bottom: 10px;">Book an Appointment</h2>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+    <% @doctors.each do |doctor| %>
+      <div style="background: #f9f9f9; padding: 15px; width: 280px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); text-align: center;">
+        <!-- Doctor Image -->
+        <%= image_tag('—Pngtree—photo men doctor physician chest_13143575.png', alt: doctor.first_name, style: 'width: 100px; height: 100px; border-radius: 50%; margin-bottom: 15px;') if doctor.photo.present? %>
+        <% unless doctor.photo.present? %>
+          <%= image_tag('—Pngtree—photo men doctor physician chest_13143575.png', alt: 'Default Doctor Image', style: 'width: 100px; height: 100px; border-radius: 50%; margin-bottom: 15px;') %>
+        <% end %>
+        
+        <!-- Doctor Name -->
+        <h3 style="margin: 0; color: #333; font-size: 1.2em;">
+          <%= doctor.first_name %> <%= doctor.last_name %>
+        </h3>
+
+        <!-- Department -->
+        <p style="margin: 10px 0 15px; font-size: 1em; color: #555;">
+          <strong>Department:</strong> <%= doctor.department.name if doctor.department %>
+        </p>
+
+        <!-- Book Appointment Button -->
+        <%= link_to 'Book Appointment', new_patient_appointment_path(@patient, doctor_id: doctor.id), 
+            class: 'btn', 
+            style: "display: inline-block; padding: 10px 15px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s ease;" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<style>
+  .btn:hover {
+    background-color: #0056b3;
+  }
+</style>

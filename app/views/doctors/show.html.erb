@@ -1,0 +1,14 @@
+<h1><%= @patient.first_name %>'s Profile</h1>
+
+<h2>Medical Records</h2>
+<% @medical_records.each do |record| %>
+  <div>
+    <p><strong>Condition:</strong> <%= record.condition %></p>
+    <p><strong>Medication:</strong> <%= record.medication %></p>
+    <p>
+      <%= link_to 'Download Record', download_medical_record_doctor_path(record), format: :pdf %>
+    </p>
+  </div>
+<% end %>
+
+<%= link_to 'Add Medical Record', new_doctor_medical_record_path(@patient) %>

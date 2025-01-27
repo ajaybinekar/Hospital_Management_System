@@ -1,0 +1,21 @@
+<h1 style="font-size: 28px; color: #007bff; margin-bottom: 20px;">
+  Admit Patient: <%= @patient.first_name %> <%= @patient.last_name %>
+</h1>
+
+<%= form_with(model: @admission, url: patient_admissions_path(@patient), local: true) do |form| %>
+  <div style="background-color: #ffffff; padding: 20px; border-radius: 10px; border: 1px solid #ccc; max-width: 600px; margin: auto; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    <div class="field" style="margin-bottom: 20px;">
+      <%= form.label :room_id, "Select Room", style: 'font-weight: bold; color: #333;' %>
+      <%= form.collection_select :room_id, @rooms, :id, :number, prompt: 'Choose a Room', 
+        style: 'width: 100%; padding: 12px; border: 1px solid #007bff; border-radius: 5px; font-size: 14px; color: #555; background-color: #fff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);' %>
+    </div>
+
+    <div class="actions" style="margin-top: 20px; text-align: right;">
+      <%= form.submit 'Admit Patient', style: 'padding: 10px 15px; border-radius: 5px; background-color: #007bff; color: white; border: none; font-weight: bold; cursor: pointer; transition: background-color 0.3s ease;' %>
+    </div>
+  </div>
+<% end %>
+
+<div style="margin-top: 20px; text-align: center;">
+  <%= link_to 'Back to Patient', @patient, style: 'text-decoration: none; font-weight: bold; padding: 8px 12px; border-radius: 5px; background-color: #6c757d; color: white;' %>
+</div>
