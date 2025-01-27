@@ -1,29 +1,35 @@
-<h1>Doctors</h1>
+<h1 style="font-size: 28px; color: #007bff; margin-bottom: 20px;">Doctors</h1>
 
-<%= link_to 'New Doctor', new_admin_doctor_path, class: 'btn btn-primary' %>
+<div style="margin-bottom: 20px; text-align: center;">
+  <%= link_to 'New Room', new_admin_doctor_path, style: 'text-decoration: none; font-weight: bold; padding: 8px 12px; border-radius: 5px; background-color: #28a745; color: white; margin-right: 10px;' %>
+  <%= link_to 'Back', admin_dashboard_path, style: 'text-decoration: none; font-weight: bold; padding: 8px 12px; border-radius: 5px; background-color: #6c757d; color: white; margin-left: 10px;' %>
+</div>
 
-<table class="table">
+<table style="width: 100%; border-collapse: collapse; background-color: #f8f9fa; border: 1px solid #ddd;">
   <thead>
-    <tr>
-      <th>Name</th>
-      <th>Specialty</th>
-      <th>Department</th>
-      <th>Email</th>
-      <th>Contact</th>
-      <th>Actions</th>
+    <tr style="background-color: #007bff; color: white; text-align: left;">
+      <th style="padding: 10px; border: 1px solid #ddd;">Name</th>
+      <th style="padding: 10px; border: 1px solid #ddd;">Specialty</th>
+      <th style="padding: 10px; border: 1px solid #ddd;">Department</th>
+      <th style="padding: 10px; border: 1px solid #ddd;">Email</th>
+      <th style="padding: 10px; border: 1px solid #ddd;">Contact</th>
+      <th style="padding: 10px; border: 1px solid #ddd;">Actions</th>
+
     </tr>
   </thead>
   <tbody>
     <% @doctors.each do |doctor| %>
-      <tr>
-        <td><%= doctor.first_name %> <%= doctor.middle_name %> <%= doctor.last_name %></td>
-        <td><%= doctor.qualifications %></td>
-        <td><%= doctor.department.name %></td>
-        <td><%= doctor.email %></td>
-        <td><%= doctor.contact_number %></td>
-        <td>
-          <%= link_to 'Edit', edit_admin_doctor_path(doctor), class: 'btn btn-warning' %> |
-          <%= link_to 'Delete', admin_doctor_path(doctor), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+      <tr style="border-bottom: 1px solid #ddd;">
+        <td style="padding: 10px; border: 1px solid #ddd;"><%= doctor.first_name %> <%= doctor.middle_name %> <%= doctor.last_name %></td>
+        <td style="padding: 10px; border: 1px solid #ddd;"><%= doctor.qualifications %></td>
+        <td style="padding: 10px; border: 1px solid #ddd;"><%= doctor.department.name %></td>
+        <td style="padding: 10px; border: 1px solid #ddd;"><%= doctor.email%></td>
+        <td style="padding: 10px; border: 1px solid #ddd;"><%= doctor.contact_number %></td>
+
+
+        <td style="padding: 10px; border: 1px solid #ddd; display: flex; gap: 10px;">
+          <%= link_to 'Edit', edit_admin_doctor_path(doctor), style: 'text-decoration: none; font-weight: bold; padding: 6px 10px; border-radius: 5px; background-color: #ffc107; color: white;' %>
+          <%= button_to 'Delete', admin_doctor_path(doctor), method: :delete, data: { confirm: 'Are you sure?' }, style: 'font-weight: bold; padding: 6px 10px; border-radius: 5px; background-color: #dc3545; color: white; border: none;' %>
         </td>
       </tr>
     <% end %>
