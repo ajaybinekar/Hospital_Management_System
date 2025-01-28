@@ -2,6 +2,9 @@
 
 <div style="margin-bottom: 20px; text-align: center;">
   <%= link_to 'New Room', new_admin_doctor_path, style: 'text-decoration: none; font-weight: bold; padding: 8px 12px; border-radius: 5px; background-color: #28a745; color: white; margin-right: 10px;' %>
+  <%= link_to 'Doctors Utilization Report (CSV)', utilization_doctors_report_admin_doctors_path(format: :csv), style: 'text-decoration: none; font-weight: bold; padding: 8px 12px; border-radius: 5px; background-color: #17a2b8; color: white;' %>
+<%= link_to 'Download Record', download_all_doctors_record_admin_doctors_path(format: :pdf), style: 'text-decoration: none; font-weight: bold; padding: 8px 12px; border-radius: 5px; background-color: #28a745; color: white; margin-right: 10px;' %>
+  <%#= link_to 'Download Record', download_medical_record_doctor_path(record), format: :pdf %>
   <%= link_to 'Back', admin_dashboard_path, style: 'text-decoration: none; font-weight: bold; padding: 8px 12px; border-radius: 5px; background-color: #6c757d; color: white; margin-left: 10px;' %>
 </div>
 
@@ -28,6 +31,7 @@
 
 
         <td style="padding: 10px; border: 1px solid #ddd; display: flex; gap: 10px;">
+          <%= link_to 'Show', admin_doctor_path(doctor), style: 'text-decoration: none; font-weight: bold; padding: 6px 10px; border-radius: 5px; background-color: #007bff; color: white;' %>
           <%= link_to 'Edit', edit_admin_doctor_path(doctor), style: 'text-decoration: none; font-weight: bold; padding: 6px 10px; border-radius: 5px; background-color: #ffc107; color: white;' %>
           <%= button_to 'Delete', admin_doctor_path(doctor), method: :delete, data: { confirm: 'Are you sure?' }, style: 'font-weight: bold; padding: 6px 10px; border-radius: 5px; background-color: #dc3545; color: white; border: none;' %>
         </td>
@@ -35,3 +39,4 @@
     <% end %>
   </tbody>
 </table>
+    <%= will_paginate @doctors %>

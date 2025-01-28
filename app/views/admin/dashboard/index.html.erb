@@ -39,6 +39,10 @@
   <div style="flex: 1 1 300px; max-width: 300px; margin: 10px; border: 1px solid #ddd; border-radius: 10px; padding: 20px; background-color: #f8f9fa; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); text-align: center;">
     <%= link_to image_tag('—Pngtree—photo men doctor physician chest_13143575.png', alt: 'Doctor Management', style: 'width: 100px; height: auto; border-radius: 50%; margin-bottom: 10px;'), new_user_session_path(role: 'doctor') %>
     <h3 style="font-size: 20px; color: #007bff; margin-bottom: 15px;">Doctor Management</h3>
+
+    <div style="margin-bottom: 15px;">
+      <%= link_to 'View All Doctors', admin_doctors_path, style: 'text-decoration: none; padding: 10px 3px; border-radius: 5px; background-color: #e9ecef; color: #333; font-weight: bold; display: inline-block; width: 100%;' %>
+    </div>
     
     <div style="margin-bottom: 15px;">
       <%= link_to 'Create Doctor', new_admin_doctor_path, style: 'text-decoration: none; padding: 10px 3px; border-radius: 5px; background-color: #007bff; color: white; font-weight: bold; display: inline-block; width: 100%;' %>

@@ -8,13 +8,29 @@ Rails.application.routes.draw do
     passwords: "devise/passwords"
   }
 
-
   namespace :admin do
     get "dashboard/index"
-    resources :doctors, :departments, :beds, :availabilities
+    resources :doctors, :departments, :availabilities
     resources :rooms do
       collection do
         get :utilization_report, defaults: { format: "csv" }
+        post :import
+      end
+    end
+    resources :beds do
+      collection do
+        post :import
+      end
+    end
+    resources :departments do
+      collection do
+        post :import
+      end
+    end
+    resources :doctors do
+      collection do
+        get :utilization_doctors_report, defaults: { format: "csv" }
+        get "download_all_doctors_record", to: "doctors#download_all_doctors_record", defaults: { format: "pdf" }
       end
     end
     resources :rooms
