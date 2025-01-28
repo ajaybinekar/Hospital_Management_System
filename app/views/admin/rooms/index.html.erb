@@ -5,8 +5,9 @@
   <%= link_to 'Room Utilization Report (CSV)', utilization_report_admin_rooms_path(format: :csv), style: 'text-decoration: none; font-weight: bold; padding: 8px 12px; border-radius: 5px; background-color: #17a2b8; color: white;' %>
   <%= link_to 'Back', admin_dashboard_path, style: 'text-decoration: none; font-weight: bold; padding: 8px 12px; border-radius: 5px; background-color: #6c757d; color: white; margin-left: 10px;' %>
 </div>
+  <%= render "import" %>
 
-<table style="width: 100%; border-collapse: collapse; background-color: #f8f9fa; border: 1px solid #ddd;">
+<table style="width: 100%; border-collapse: collapse; background-color: #f8f9fa; border: 1px solid #ddd; margin-top: 10px;">
   <thead>
     <tr style="background-color: #007bff; color: white; text-align: left;">
       <th style="padding: 10px; border: 1px solid #ddd;">Room Number</th>

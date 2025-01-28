@@ -1,15 +1,33 @@
-<h1>Doctor: <%= @doctor.first_name %> <%= @doctor.middle_name %> <%= @doctor.last_name %></h1>
+<h1 style="font-size: 28px; color: #007bff; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 2px solid #ddd;">
+  Doctor: <%= @doctor.first_name %> <%= @doctor.middle_name %> <%= @doctor.last_name %>
+</h1>
 
-<p><strong>Email:</strong> <%= @doctor.email %></p>
-<p><strong>Contact Number:</strong> <%= @doctor.contact_number %></p>
-<p><strong>Specialty:</strong> <%= @doctor.qualifications %></p>
-<p><strong>Department:</strong> <%= @doctor.department.name %></p>
-<p><strong>Gender:</strong> <%= @doctor.gender %></p>
-<p><strong>Date of Birth:</strong> <%= @doctor.date_of_birth %></p>
-<p><strong>Experience:</strong> <%= @doctor.experience %></p>
-<p><strong>Nationality:</strong> <%= @doctor.nationality %></p>
+<p style="font-size: 16px; margin: 10px 0;">
+  <strong style="color: #495057;">Email:</strong> <%= @doctor.email %>
+</p>
+<p style="font-size: 16px; margin: 10px 0;">
+  <strong style="color: #495057;">Contact Number:</strong> <%= @doctor.contact_number %>
+</p>
+<p style="font-size: 16px; margin: 10px 0;">
+  <strong style="color: #495057;">Specialty:</strong> <%= @doctor.qualifications %>
+</p>
+<p style="font-size: 16px; margin: 10px 0;">
+  <strong style="color: #495057;">Department:</strong> <%= @doctor.department %>
+</p>
+<p style="font-size: 16px; margin: 10px 0;">
+  <strong style="color: #495057;">Gender:</strong> <%= @doctor.gender %>
+</p>
+<p style="font-size: 16px; margin: 10px 0;">
+  <strong style="color: #495057;">Date of Birth:</strong> <%= @doctor.date_of_birth %>
+</p>
+<p style="font-size: 16px; margin: 10px 0;">
+  <strong style="color: #495057;">Experience:</strong> <%= @doctor.experience %>
+</p>
+<p style="font-size: 16px; margin: 10px 0;">
+  <strong style="color: #495057;">Nationality:</strong> <%= @doctor.nationality %>
+</p>
 
-<%= image_tag @doctor.photo if @doctor.photo.attached? %>
-
-<%= link_to 'Edit', edit_admin_doctor_path(@doctor), class: 'btn btn-warning' %> |
-<%= link_to 'Back', admin_doctors_path, class: 'btn btn-secondary' %>
+<div style="margin-top: 20px;">
+  <%= link_to 'Edit', edit_admin_room_path(@doctor), style: 'text-decoration: none; font-weight: bold; padding: 8px 12px; border-radius: 5px; background-color: #17a2b8; color: #fff; margin-right: 5px;' %>
+  <%= link_to 'Back', admin_doctors_path, style: 'text-decoration: none; font-weight: bold; padding: 8px 12px; border-radius: 5px; background-color: #6c757d; color: #fff;' %>
+</div>

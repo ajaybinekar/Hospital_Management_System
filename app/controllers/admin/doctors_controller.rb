@@ -1,13 +1,16 @@
 class Admin::DoctorsController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_admin!
+  before_action :set_param, only: [ :show, :edit ]
 
   def index
-    @doctors = Doctor.all
+    @doctors = Doctor.paginate(page: params[:page], per_page: 4)
   end
 
   def new
     @doctor = Doctor.new
+  end
+  def show
   end
 
   def create
@@ -27,9 +30,7 @@ class Admin::DoctorsController < ApplicationController
   end
 end
 
-
   def edit
-    @doctor = Doctor.find(params[:id])
   end
 
   def update
@@ -47,10 +48,35 @@ end
     redirect_to admin_doctors_path, notice: "Doctor deleted successfully."
   end
 
+  def utilization_doctors_report
+    @doctor = Doctor.all
+    respond_to do |format|
+      format.csv { send_data Doctor.to_csv, filename: "doctor_utilization_report-#{Date.today}.csv" }
+    end
+  end
+  def download_all_doctors_record
+  @doctors = Doctor.all
+  pdf = Prawn::Document.new
+  @doctors.each do |doctor|
+  pdf.text "First Name: #{doctor.first_name}"
+  pdf.text "Last Name: #{doctor.last_name}"
+  pdf.text "Date of Birth: #{doctor.date_of_birth.strftime('%d/%m/%Y') if doctor.date_of_birth}"
+  pdf.text "Contact Number: #{doctor.contact_number}"
+  pdf.text "Email: #{doctor.email}"
+  pdf.text "Gender: #{doctor.gender}"
+  pdf.text "qualifications: #{doctor.qualifications}"
+  pdf.text "experience: #{doctor.experience}"
+  end
+  send_data pdf.render, filename: "Doctors_records.pdf", type: "application/pdf", disposition: "attachment"
+end
+
   private
 
   def doctor_params
     params.require(:doctor).permit(:first_name, :middle_name, :last_name, :photo, :date_of_birth, :contact_number, :email, :nationality, :gender, :qualifications, :experience, :department_id, :user_id)
+  end
+  def set_param
+    @doctor = Doctor.find(params[:id])
   end
 
   def authorize_admin!

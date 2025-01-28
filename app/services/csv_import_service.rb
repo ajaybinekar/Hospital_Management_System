@@ -1,0 +1,16 @@
+class CsvImportService
+  require "csv"
+
+  def call(file)
+    opened_file = File.open(file)
+    CSV.foreach(opened_file, headers: true) do |row|
+    debugger
+
+      user_hash = {}
+      user_hash[:number] = row["number"]
+      user_hash[:department_id] = row["department_id"]
+      user_hash[:capacity] = row["capacity"]
+      Room.find_or_create_by!(user_hash)
+    end
+  end
+end

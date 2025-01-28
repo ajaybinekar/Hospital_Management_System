@@ -24,6 +24,14 @@ class Admin::BedsController < ApplicationController
       render :new
     end
   end
+    def import
+    return redirect_to request.referer, notice: "No file added" if params[:file].nil?
+    return redirect_to request.referer, notice: "Only CSV files allowed" unless params[:file].content_type == "text/csv"
+
+    CsvImportBedService.new.call(params[:file])
+
+    redirect_to admin_beds_path, notice: "Import started..."
+  end
 
   def edit
     @rooms = Room.all
